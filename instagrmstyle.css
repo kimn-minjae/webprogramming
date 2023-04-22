@@ -1,0 +1,42 @@
+*{text-align: center;}
+
+
+
+.instagramlogin{font-family: 'Pacifico', cursive; font-size: 50px; text-align: center;}
+
+#loginname{
+    width: 20%;
+    height: 50px;
+    border-radius: 0px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+    text-align: center;
+  }
+  #password{
+    width: 20%;
+    height: 50px;
+    border-radius: 0px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+    text-align: center;
+  }
+  #login{
+    width: 20%;
+    height: 50px;
+    border-radius: 0px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid rgb(255, 255, 255);
+    outline: none;
+    text-align: center;
+    background-color: rgb(69, 69, 243);
+  }
+  #login::placeholder{
+    color: aliceblue;
+    font-size: 15px;
+  }
+ 
