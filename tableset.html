@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{
+        background-image: url(https://item.kakaocdn.net/do/9d4a4d8368feb0ea31d42724f36156f5f604e7b0e6900f9ac53a43965300eb9a);
+        background-repeat: no-repeat;
+        background-position-x: right;
+       }
+        input[type=text],
+        textarea{
+            width: 80%;
+            padding: 6px 10px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 2px soild rgb(50, 16, 161);
+            border-radius: 4px;
+        }   
+        input[type=text]:hover{
+            background-color: bisque;
+        }
+        input[type=text]:focus{
+            font-size: 1.2em;
+        }
+        input[type=submit]{
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+        }
+    </style>
+</head>
+<body>
+    <h2>상품 평</h2>
+    <p>받으신 상품을 평가해주세요.</p>
+    <form action="">
+        <label for="name">이름</label><br>
+        <input type="text" id="name" name="name" placeholder="이름"><br>
+        <label for="email">이메일</label><br>
+        <input type="text" id="email" name="email" placeholder="이메일"><br>
+        <label for="name">상품 평</label><br>
+        <textarea name="subject" id="subject" placeholder="상품 평을 입력해주세요" style="height: 100px;"></textarea><br>
+        <input type="submit" value="submit">
+    </form>
+
+    
+</body>
+</html>
