@@ -5,22 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        // var, let, const
+        var str1 = 'hellow world';
+        let str2 = 'MBTI 설문지입니다.  ';
+        const str3 = '반갑습니다';
+        //console, document
+        console.log(str1);
+        document.write(str2);
+        alert(str1);
+        confirm("당신은 T입니까? 맞으면 확인");
+        let userinput = prompt("당신의 이름을 입력하세요");
+        alert(str3+userinput);
+        function mbti(){
+            let usermbti = prompt("당신의 MBTI를 입력하세요");
+        }
+    </script>
 </head>
 <body>
-    <center><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" height="100" width="100"><br></center>
-        <h1 style="text-align: center;" >Sign in to GitHub</h1>
-    <form method="post" action="" name="form1">
-        <fieldset>
-            <center>Username or email address<br>
-            <input type="text" name="id"><br><br><br>
-            Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./forget password.html">forget password?</a><br>
-            <input type="password" name="password"><br><br><br>
-            <fieldset>
-                <input type="button" style="border: solid 3px greenyellow; font-size: 30px; background-color: greenyellow;"  value="Sign in" onclick="alert('DONE!')">
-            </center>
-            </fieldset>
-        </fieldset>
-    </form>
-    
+    <button onclick="mbti()">MBTI 검사하기</button>
 </body>
 </html>
