@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1 id="test1"></h1>
+    <h1 id="test2"></h1>
+    <button id="button-black">야간 모드</button>
+    <button id="button-white">원상복구</button>
+    <script>
+        let time = new Date().getHours();
+        let msg;
+        document.getElementById("test1").innerHTML = "time="+time;
+        if(time < 12) {
+            msg = "Good Morning";
+        } else {
+            msg = "Good Afternoon";
+        }
+        document.getElementById("test2").innerHTML = msg;
+        const btnBlack = document.getElementById("button-black");
+        btnBlack.addEventListener("click", (e) => {
+        document.body.style.backgroundColor = "black"; // 클릭 시 배경색이 검은색으로 바뀜
+        document.body.style.color = "white" // 클릭 시 글자 색깔이 흰색으로 바뀜
+        });
+        const btnWhite = document.getElementById("button-white"); // 이건 반대로 만든 것
+        btnWhite.addEventListener("click", (e) => {
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black"
+        });
+
+    </script>
+</body>
+</html>
