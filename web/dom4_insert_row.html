@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="special">
+        <tr>
+            <td>(1, 1) 셀</td>
+            <td>(1, 2) 셀</td>
+        </tr>
+        <tr>
+            <td>(2, 1) 셀</td>
+            <td>(2, 2) 셀</td>
+        </tr>
+    </table>
+    <br>
+
+    <button onclick="insert()">행 추가</button>
+    <button onclick="deleteRow()">행 삭제</button>
+
+    <script>
+        function insert() {
+            const table = document.getElementById('special');
+            const newRow = table.insertRow();
+            const newCell1 = newRow.insertCell(0);
+            const newCell2 = newRow.insertCell(1);
+            newCell1.innerText = '새로운 셀 (1, 1)';
+            newCell2.innerText = '새로운 셀 (1, 2)';
+        }
+        function deleteRow(){
+            const table = document.getElementById('special');
+            const newRow = table.deleteRow(0);
+        }
+    </script>
+
+</body>
+
+</html>
