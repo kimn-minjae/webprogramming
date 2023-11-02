@@ -5,20 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <h1>덧셈계산기</h1>
-    첫번째 수: <input type="text" id="num1"><br>
-    두번째 수: <input type="text" id="num2"><br>
-    합계: <input type="text" id="sum"><br>
-    <button onclick="calc()">계산</button>
     <script>
-        function calc(){
-            let num1 = document.getElementById('num1').value;
-            let num2 = document.getElementById('num2').value;
-            let sum = parseInt(num1) + parseInt(num2);
-            document.getElementById('sum').value = sum;
-        }
-    </script>
-</body>
+                function calc() {
+                    let answer = document.getElementById("answer").value;
+                    let s = document.getElementById("problem").value;
+                    let solution = eval(s);
+                    if(answer == solution){
+                        alert("정답입니다.");
+                    }
+                    else{
+                        alert("틀렸습니다. 정답은 " + solution);
+                    }
+                }
+            </script>
+        </head>
+        <body>
+                <h1>Math Quiz</h1>
+                <input type="text" id="problem" value="12*2+20-30"><br>
+                <input type="text" id="answer">
+                <button onclick="calc()">정답 알아보기</button>
+        </body>
 </html>
