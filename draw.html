@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <input type="color" id="colorPicker" value="#000000">
+  <input type="range" id="lineWidthPicker" min="1" max="20" value="5">
+  <select id="shapeSelector">
+    <option value="line">Line</option>
+    <option value="rectangle">Rectangle</option>
+    <option value="circle">Circle</option>
+  </select>
+  <button id="eraserButton">Eraser</button>
+  <canvas id="drawingCanvas" width="800" height="600"></canvas>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const canvas = document.getElementById('drawingCanvas');
+      const context = canvas.getContext('2d');
+      const colorPicker = document.getElementById('colorPicker');
+      const lineWidthPicker = document.getElementById('lineWidthPicker');
+      const shapeSelector = document.getElementById('shapeSelector');
+      const eraserButton = document.getElementById('eraserButton');
+      let isDrawing = false;
+      let isErasing = false;
+      let startX, startY;
+      let backgroundImage = null;
+
+      canvas.addEventListener('mousedown', startDrawing);
+
+      canvas.addEventListener('mouseup', stopDrawing);
+
+      canvas.addEventListener('mousemove', draw);
+
+      eraserButton.addEventListener('click', toggleEraser);
+
+      function startDrawing(e) {
+        isDrawing = true;
+        startX = e.clientX - canvas.offsetLeft;
+        startY = e.clientY - canvas.offsetTop;
+
+        context.beginPath();
+        context.moveTo(startX, startY);
+      }
+
+      function stopDrawing() {
+        isDrawing = false;
+        context.beginPath();
+        backgroundImage = null;
+      }
+
+      function draw(e) {
+        if (!(isDrawing || isErasing)) return;
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (backgroundImage) {
+          context.drawImage(backgroundImage, 0, 0);
+        }
+
+        if (isErasing) {
+          context.globalCompositeOperation = 'destination-out';
+          context.lineWidth = lineWidthPicker.value;
+          context.strokeStyle = 'rgba(0,0,0,0)';
+        } else {
+          context.globalCompositeOperation = 'source-over';
+          context.lineWidth = lineWidthPicker.value;
+          context.lineCap = 'round';
+          context.strokeStyle = colorPicker.value;
+        }
+
+        const currentX = e.clientX - canvas.offsetLeft;
+        const currentY = e.clientY - canvas.offsetTop;
+
+        switch (shapeSelector.value) {
+          case 'line':
+            context.lineTo(currentX, currentY);
+            context.stroke();
+            break;
+          case 'rectangle':
+            context.strokeRect(startX, startY, currentX - startX, currentY - startY);
+            break;
+          case 'circle':
+            const radius = Math.sqrt((currentX - startX) ** 2 + (currentY - startY) ** 2) / 2;
+            context.beginPath();
+            context.arc(startX + (currentX - startX) / 2, startY + (currentY - startY) / 2, radius, 0, 2 * Math.PI);
+            context.stroke();
+            break;
+        }
+      }
+
+      function toggleEraser() {
+        isErasing = !isErasing;
+        eraserButton.classList.toggle('active', isErasing);
+
+        colorPicker.disabled = isErasing;
+        shapeSelector.disabled = isErasing;
+      }
+    });
+  </script>
+</body>
+</html>
